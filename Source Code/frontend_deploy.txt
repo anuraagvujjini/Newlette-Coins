@@ -1,0 +1,8 @@
+Steps to deploy frontend :
+1. Create an elasticBeansTalk application
+2. Select php platform
+3. cd to frontend project directory on local machine
+4. gulp --production (might want to change config.json for backend url)
+5. copy /build/* into any.zip file
+6. Upload this zip to AWS
+7. Click ConfigureMoreOptions to select security & change env name if required

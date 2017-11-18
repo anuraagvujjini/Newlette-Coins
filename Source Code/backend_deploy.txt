@@ -1,0 +1,27 @@
+Steps to deploy backend :
+1. Create an elasticBeansTalk application
+2. Select Platform = Tomcat
+#3. Select upload to upload file ROOT.war (mvn package -DskipTests)
+4. Click MoreConfigurationOptions
+5. Modify security to select KeyPair
+6. Click ChangePlatformConfigurationOptions to change to Tomcat7-Java7
+7. Click Database to create mysql database (remember the username/password used)
+8. Click CreateEnvironment
+9. Connect to EC2 instance using SSH
+10. sudo yum install mysql
+11. mysql --host= --user= --password=
+12. Connect to the appropriate db or create db (create database newlettecoins_db)
+13. Upload db.sql file using filezilla - http://screencast.com/t/D5tVzdwNiM5
+13. Import db using source command (source newlettecoins_db.sql)
+14. sudo yum install git
+15. Clone the repo (git clone https://bitbucket.org/nitin_surana/newlette_coins.git)
+15.2 Install maven (http://luismachadoreis.com/2016/03/31/install-maven-on-aws-ec2-linux/)
+sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+sudo yum install -y apache-maven
+mvn --version
+16. Create war using "mvn package -DskipTests"
+17. Move war to /usr/share/tomcat7/ROOT.war
+18. service tomcat7 restart
+19. Open port 8080 on EC2 instance by adding it in the security group inbound rules - http://screencast.com/t/RFRenbMuXqZF
+20. Visit applicationUrl:8080
