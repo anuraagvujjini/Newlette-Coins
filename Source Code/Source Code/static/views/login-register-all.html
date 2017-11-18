@@ -1,0 +1,152 @@
+<logged-in-header></logged-in-header>
+<div id="content">
+    <div class="form-outer-container container">
+        <div class="row">
+            <div class="form-inner-container col-md-6 col-md-offset-3 col-xs-offset-1 col-xs-10">
+                <div class="layout"></div>
+                <div class="tab-container login-register-tabs">
+                    <ul class="nav nav-tabs" ng-if="tab==='login' || tab==='register' || tab==='forgot-password'">
+                        <li ng-class="tab==='login'?'active':''">
+                            <a href="#loginLink" show-tab>Login</a>
+                        </li>
+                        <li ng-class="tab==='register'?'active':''">
+                            <a href="#registerLink" show-tab>Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="login-form tab-pane fade {{tab==='login'?'in active':''}}" id="loginLink" ng-controller="LoginController">
+                            <div class="login-form-container">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <h1 class="m-t-10 title"><i class="glyphicon glyphicon-circle-arrow-right transparent-border"></i></h1>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <small class="text-white">Already have an account ?</small>
+                                        <h2 class="no-padding no-margin title"><span>Log In Here</span></h2>
+                                    </div>
+                                </div>
+                                <form id="login" ng-submit="doLogin()">
+                                    <form-errors></form-errors>
+                                    <ul class="list-unstyled">
+                                        <li class="alert alert-success" ng-if="registerMessage">
+                                            {{registerMessage}}
+                                        </li>
+                                    </ul>
+                                    <div class="form-group">
+                                        <div class="p-relative">
+                                            <i class="glyphicon glyphicon-user input-icon"></i>
+                                            <input name="username" id="username" type="email" class="form-control" placeholder="Email" required ng-model="username">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="p-relative">
+                                            <i class="glyphicon glyphicon-lock input-icon"></i>
+                                            <input name="password" id="password" type="password" class="form-control" placeholder="Password" required ng-model="password">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="pull-right">
+                                            <button class="btn btn-default btn-form" type="submit">Login <i class="glyphicon glyphicon-forward"></i></button>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-group">
+                                        <div class="pull-right">
+                                            <a href="#forgot-password" show-tab class="text-white">Forgot your password ?</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade {{tab==='forgot-password'?'in active':''}}" id="forgot-password" ng-controller="ForgotPasswordController">
+                            <div class="forgot-password-container">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <h1 class="m-t-10 title"><i class="glyphicon glyphicon-circle-arrow-right transparent-border"></i></h1>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <small class="text-white">Don't remember your password ?</small>
+                                        <h2 class="no-padding no-margin title"><span>Let us help</span></h2>
+                                    </div>
+                                </div>
+                                <form ng-submit="resetPassword()">
+                                    <form-messages></form-messages>
+                                    <form-errors></form-errors>
+                                    <div class="form-group">
+                                        <div class="p-relative">
+                                            <i class="glyphicon glyphicon-user input-icon"></i>
+                                            <input type="email" class="form-control" name="email" placeholder="Email" required ng-model="email">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="pull-right">
+                                            <button class="btn btn-default btn-form btn-forgot-password" type="submit">Request New Password <i class="glyphicon glyphicon-forward"></i></button>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-group">
+                                        <div class="pull-right">
+                                            <a href="#" id="back-to-login" class="text-white">Back to login</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="register-form tab-pane fade {{tab==='register'?'in active':''}}" id="registerLink" ng-controller="RegisterController">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h1 class="m-t-10 title"><i class="glyphicon glyphicon-plus-sign transparent-border"></i></h1>
+                                </div>
+                                <div class="col-xs-9">
+                                    <small class="text-white">Don't have an account ?</small>
+                                    <h2 class="no-padding no-margin title"><span>Register Now</span></h2>
+                                </div>
+                            </div>
+                            <form id="register" ng-submit="doRegister()">
+                                <form-errors></form-errors>
+                                <div class="form-group">
+                                    <div class="p-relative">
+                                        <i class="glyphicon glyphicon-inbox input-icon"></i>
+                                        <input type="email" class="form-control" name="email" placeholder="Email" required ng-model="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="p-relative">
+                                        <i class="glyphicon glyphicon-user input-icon"></i>
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name" required ng-model="firstName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="p-relative">
+                                        <i class="glyphicon glyphicon-user input-icon"></i>
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" ng-model="lastName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="p-relative">
+                                        <i class="glyphicon glyphicon-lock input-icon"></i>
+                                        <input type="password" class="form-control" name="password" placeholder="Password" required ng-model="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="p-relative">
+                                        <i class="glyphicon glyphicon-lock input-icon"></i>
+                                        <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password" required ng-model="cpassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="pull-right">
+                                        <button class="btn btn-default btn-form" type="submit">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

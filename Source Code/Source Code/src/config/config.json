@@ -1,0 +1,39 @@
+{
+  "api": {
+    //        "url": "http://192.168.0.6:8080",
+    "url": "http://tomcat-env.pgd2dwdcux.us-west-2.elasticbeanstalk.com:8080",
+    //"url": "http://localhost:8080",
+    "endpoints": {
+      "login": "/authenticate",
+      "userInfo": "/api/userInfo",
+      "create": "/api/game",
+      "detonate": "/api/detonate",
+      "register": "/register",
+      "forgotPassword": "/forgotpassword",
+      "profile": "/api/profile",
+      "logout": "/api/logout",
+      "changePassword": "/api/change-password",
+      "leaderboard": "/api/leaderboard",
+      "history": "/api/history"
+    }
+  },
+  "board": {
+    "width": 1340,
+    "height": 680,
+    "maxBombsToPlace": 4,
+    "bombCost": 25,
+    "cols": 4,
+    "rows": 4
+  },
+  "tile": {
+    "grass": {
+      "_4x4": {
+        "actualWidth": {
+          "top": 463,
+          "bottom": 512
+        },
+        "spriteWidth": 650,
+      }
+    }
+  }
+}
